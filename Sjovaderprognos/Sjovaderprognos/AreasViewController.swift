@@ -8,9 +8,15 @@
 
 import UIKit
 
-class AreasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+typealias JSONDictionary = Dictionary<String, AnyObject>
+typealias JSONArray = Array<AnyObject>
+
+class AreasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLConnectionDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    let responseData = NSMutableData()
+    var areas : [Area] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,22 +24,48 @@ class AreasViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        getAreas();
+    }
+    
+    func getAreas() {
+        let request = NSURLRequest(URL: NSURL(string: "http://sjovaderprognos.herokuapp.com/Areas")!)
+        let conn = NSURLConnection(request: request, delegate:self)
+    }
+    
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
+        self.responseData.appendData(data)
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
+        var json : AnyObject! = NSJSONSerialization.JSONObjectWithData(self.responseData, options: NSJSONReadingOptions.MutableLeaves, error: nil)
+        self.areas = self.handleGetAreas(json)
+        self.tableView.reloadData()
+    }
+    
+    func handleGetAreas(json: AnyObject) -> [Area] {
+        var areas = Array<Area>()
+        if let areaObjects = json as? JSONArray {
+            for areaObject: AnyObject in areaObjects {
+                if let areaAsJson = areaObject as? JSONDictionary {
+                    if let area = Area.createFromJson(areaAsJson) {
+                        areas.append(area)
+                    }
+                }
+            }
+        }
+        return areas
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return areas.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        cell.textLabel?.text = "Norra Östersjön"
+        cell.textLabel?.text = areas[indexPath.row].areaName
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
-        
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
-    }
-
 }
 

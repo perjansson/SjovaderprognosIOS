@@ -14,6 +14,7 @@
 		2EC953F41A38D4FC00238ABD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EC953F31A38D4FC00238ABD /* Images.xcassets */; };
 		2EC953F71A38D4FC00238ABD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC953F51A38D4FC00238ABD /* LaunchScreen.xib */; };
 		2EC954031A38D4FC00238ABD /* SjovaderprognosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC954021A38D4FC00238ABD /* SjovaderprognosTests.swift */; };
+		2EC9540D1A38DC0200238ABD /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC9540C1A38DC0200238ABD /* Area.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		2EC953FC1A38D4FC00238ABD /* SjovaderprognosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SjovaderprognosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC954011A38D4FC00238ABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EC954021A38D4FC00238ABD /* SjovaderprognosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SjovaderprognosTests.swift; sourceTree = "<group>"; };
+		2EC9540C1A38DC0200238ABD /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				2EC953E91A38D4FC00238ABD /* AppDelegate.swift */,
 				2EC953EE1A38D4FC00238ABD /* AreasViewController.swift */,
+				2EC9540C1A38DC0200238ABD /* Area.swift */,
 				2EC953F01A38D4FC00238ABD /* Main.storyboard */,
 				2EC953F31A38D4FC00238ABD /* Images.xcassets */,
 				2EC953F51A38D4FC00238ABD /* LaunchScreen.xib */,
@@ -217,6 +220,7 @@
 			files = (
 				2EC953EF1A38D4FC00238ABD /* AreasViewController.swift in Sources */,
 				2EC953ED1A38D4FC00238ABD /* Sjovaderprognos.xcdatamodeld in Sources */,
+				2EC9540D1A38DC0200238ABD /* Area.swift in Sources */,
 				2EC953EA1A38D4FC00238ABD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,4 +1,4 @@
 SjovaderprognosIOS
 ==================
 
-iOS showing the Swedish sea weather forecast 
+An iOS app showing the Swedish sea weather forecast 

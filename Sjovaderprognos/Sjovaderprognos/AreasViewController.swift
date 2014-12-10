@@ -40,6 +40,15 @@ class AreasViewController: UIViewController, UITableViewDataSource, UITableViewD
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         var json : AnyObject! = NSJSONSerialization.JSONObjectWithData(self.responseData, options: NSJSONReadingOptions.MutableLeaves, error: nil)
         self.areas = self.handleGetAreas(json)
+        
+        let locale = NSLocale(localeIdentifier: "sv_SE")
+        self.areas.sort {
+            let str1 = $0.areaName! as NSString
+            let str2 = $1.areaName! as NSString
+            
+            return str1.compare(str2, options: .CaseInsensitiveSearch, range: NSMakeRange(0, str1.length), locale: locale) == NSComparisonResult.OrderedAscending
+        }
+        
         self.tableView.reloadData()
     }
     
